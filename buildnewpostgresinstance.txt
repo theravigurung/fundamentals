@@ -1,0 +1,44 @@
+---> Packages listed: https://download.docker.com/linux/centos/7/x86_64/stable/Packages/
+
+---> Get package to local:
+wget <Package you need URL>
+
+---> Install Docker:
+
+yum -y install slirp4nets fuse-overlayfs container-selinux
+
+yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
+yum install docker-ce docker-ce-cli conrainerd.io
+
+rpm -i docker-ce-rootless-extras-20.10.7-3.el7.x86_64.rpm
+
+systemctl enable --now docker
+
+docker pull postgres:10.3
+
+docker run -i -t <image id>
+
+docker run --name <container_name> -p 5432:5432 -e POSTGRES_PASSWORD=<password> -i -t postgres:10.3
+
+---> Once container spun up, exec to container:
+docker exec -it <container_name> bash
+
+---> Switch to postgres user:
+psql -U postgres
+
+---> Create new Database, following by groups, role, and access.
+CREATE DATABASE "<database_name>";
+
+---> Create Role:
+create role "<role_name>" with superuser password '<password>';
+
+---> Alter role:
+alter role <role_name> with LOGIN;
+ALTER GROUP <group_name> ADD USER "user_name";
+
+---> Grant access on DB:
+GRANT CREATE ON DATABASE "<database_name>" to <user_name>;
+GRANT TEMPORARY ON DATABASE "<database_name>" to <user_name>;
+GRANT CONNECT ON DATABASE "<database_name>" to <user_name>;
+
