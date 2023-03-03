@@ -1,0 +1,15 @@
+---> ssh into server:
+ssh <user>@<server_ip>
+
+---> Check if docker container is running:
+docker ps
+
+---> Check more details about docker container:
+docker inspect <container_id>
+
+---> Exec into container:
+docker exec -it <container_id> /bin/bash
+
+or
+
+docker exec -it <container_id> bash
