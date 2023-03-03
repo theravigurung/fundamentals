@@ -42,3 +42,4 @@ GRANT CREATE ON DATABASE "<database_name>" to <user_name>;
 GRANT TEMPORARY ON DATABASE "<database_name>" to <user_name>;
 GRANT CONNECT ON DATABASE "<database_name>" to <user_name>;
 
+---> use "\l" to verify access privileges
