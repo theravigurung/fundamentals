@@ -1,0 +1,14 @@
+---> Tar DB backup files:
+tar -czvf /<source file path>/<database_name>.zip.tar.gz /<destination_path>/
+
+---> Move tar backup to destination:
+rsync -a /<source file path>/<database_name>.zip.tar.gz <username>@<server_ip>:/<destination_path>/
+
+---> Change owner of directory:
+chown <user>:<user> <directory>
+
+---> Restore database from backup:
+restore database <db_name> FROM '<backup_file_path>';
+
+---> Check DB backup restored on server:
+show databases;
